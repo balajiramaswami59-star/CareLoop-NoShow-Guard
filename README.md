@@ -1,6 +1,6 @@
 # CareLoop Clinics — No-Show Guard
 
-**Submission repository URL:** `https://github.com/balajiramaswami59-star/CareLoop-NoShow-Guard` (replace after publishing)
+**Submission repository URL:** `https://github.com/balajiramaswami59-star/CareLoop-NoShow-Guard`
 
 ## Four-part summary
 
@@ -52,7 +52,7 @@ The full cleaned table is sorted by `appointment_id` before the exact `train_tes
 
 ## Repository structure
 
-- `data/appointments.csv`, `data/clinics.csv`, `data/followup_notes.csv` — untouched originals.
+- Original datasets (`data/appointments.csv`, `data/clinics.csv`, `data/followup_notes.csv`) are retained locally and are not included in this public repository. Obtain them from the assignment provider to reproduce the complete workflow.
 - `01_ingest_clean.ipynb` — Tasks 1.1–1.6, including Open-Meteo requests.
 - `rejected_rows.json`, `appointments_clean.csv`, `clinics_enriched.csv`, `load_data.sql` — Part 1 handoffs.
 - `02_queries.sql` — MySQL 8 schema and Tasks 2.1–2.5.
