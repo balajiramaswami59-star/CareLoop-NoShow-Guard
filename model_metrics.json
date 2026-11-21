@@ -1,0 +1,17 @@
+{
+  "winner": "Logistic regression",
+  "cv_auc": {
+    "Logistic regression": 0.7737139899948249,
+    "Depth-3 tree": 0.6784494968661952,
+    "Random forest": 0.7466024782933701,
+    "Tuned forest": 0.7673242251739405
+  },
+  "threshold": 0.35,
+  "test_auc": 0.788933022873579,
+  "test_precision": 0.5714285714285714,
+  "test_recall": 0.5714285714285714,
+  "test_flagged": 49,
+  "rows": 990,
+  "no_shows": 218,
+  "test_no_shows": 49
+}

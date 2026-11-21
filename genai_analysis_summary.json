@@ -1,0 +1,18 @@
+{
+  "total_source_notes": 30,
+  "valid_classifications": 6,
+  "skipped_blank": 1,
+  "failed_api": 3,
+  "pending_api": 20,
+  "merged_records": 6,
+  "missing_appointment_matches": 0,
+  "root_cause_counts": {
+    "distance_or_transport": 2,
+    "forgot_or_no_reminder": 1,
+    "cost_or_fee": 1,
+    "illness_or_emergency": 1,
+    "work_or_schedule": 1
+  },
+  "analysis_complete": false,
+  "limitation": "Gemini API returned HTTP 402 because prepaid credits were depleted. Only six valid classifications are available."
+}
