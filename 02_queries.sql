@@ -42,10 +42,10 @@ ORDER BY no_show_rate_pct DESC;
 -- 2.3 No-show rates by booking lead time
 SELECT
     CASE
-        WHEN lead_days BETWEEN 0 AND 2 THEN '0-2 days'
-        WHEN lead_days BETWEEN 3 AND 7 THEN '3-7 days'
-        WHEN lead_days BETWEEN 8 AND 14 THEN '8-14 days'
-        WHEN lead_days >= 15 THEN '15+ days'
+        WHEN lead_days BETWEEN 1 AND 7 THEN '1-7'
+        WHEN lead_days BETWEEN 8 AND 14 THEN '8-14'
+        WHEN lead_days BETWEEN 15 AND 30 THEN '15-30'
+        WHEN lead_days >= 31 THEN '31+'
         ELSE 'Unknown'
     END AS lead_time_band,
     COUNT(*) AS total_appointments,

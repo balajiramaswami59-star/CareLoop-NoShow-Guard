@@ -52,7 +52,7 @@ The full cleaned table is sorted by `appointment_id` before the exact `train_tes
 
 ## Repository structure
 
-- Original datasets (`data/appointments.csv`, `data/clinics.csv`, `data/followup_notes.csv`) are retained locally and are not included in this public repository. Obtain them from the assignment provider to reproduce the complete workflow.
+- Original assignment datasets are included in `data/`: `appointments.csv`, `clinics.csv`, and `followup_notes.csv`. These files are included in this repository for reproducibility.
 - `01_ingest_clean.ipynb` — Tasks 1.1–1.6, including Open-Meteo requests.
 - `rejected_rows.json`, `appointments_clean.csv`, `clinics_enriched.csv`, `load_data.sql` — Part 1 handoffs.
 - `02_queries.sql` — MySQL 8 schema and Tasks 2.1–2.5.
@@ -60,7 +60,7 @@ The full cleaned table is sorted by `appointment_id` before the exact `train_tes
 - `04_genai.ipynb` — Part 4 execution notebook.
 - `notes_analysed_status.csv` — 30-row status tracker preserving valid, failed, skipped, and pending records.
 - `genai_analysis_summary.json` — verified partial GenAI analysis summary.
-- `notes_analysed.csv` — original placeholder; not a completed AI output.
+- `notes_analysed.csv` — first 10 notes: 6 valid Gemini classifications, 1 blank note skipped, and 3 API-blocked records. This is a partial AI result, not 10 successful classifications.
 
 ## How to reproduce
 
@@ -95,7 +95,7 @@ The full cleaned table is sorted by `appointment_id` before the exact `train_tes
 
 6. Review notebook outputs and remove credentials,
    tokens and sensitive information before publishing.
-   Replace the GitHub URL placeholder with the
+   The public GitHub repository URL is
    actual public repository URL.
 
 **Privacy:** Example data is supplied by the assignment. Never commit Gemini API keys. In real clinical deployments, remove direct identifiers and obtain appropriate approvals before sending patient notes to an external model.

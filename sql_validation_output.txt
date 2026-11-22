@@ -17,10 +17,10 @@ C06	Edappally Medical Centre	Kochi	142	23	16.20
 C03	Sitabuldi Health Point	Nagpur	82	13	15.85
 C05	Vaishali Nagar Clinic	Jaipur	130	18	13.85
 lead_time_band	total_appointments	total_no_shows	no_show_rate_pct
-0-2 days	77	8	10.39
-3-7 days	313	55	17.57
-8-14 days	304	53	17.43
-15+ days	296	102	34.46
+1-7	390	63	16.15
+8-14	304	53	17.43
+15-30	253	76	30.04
+31+	43	26	60.47
 appt_month	total_appointments	total_no_shows	no_show_rate_pct	previous_month_rate	month_over_month_change_pp
 2025-01	157	39	24.84	NULL	NULL
 2025-02	151	31	20.53	24.84	-4.31
