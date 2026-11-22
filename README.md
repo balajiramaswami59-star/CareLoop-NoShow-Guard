@@ -7,7 +7,7 @@
 1. **Python:** Cleaned **1,020** original appointment records into **990** unique valid bookings; rejected **32** rows in the separate csv-module type-check exercise.
 2. **SQL:** **218/990 (22.0%)** appointments were missed. The highest observed clinic rate was **33.3% (30/90)** at Gomti Nagar Care Point, while Hadapsar Care Centre recorded **27.3% (39/143)**.
 3. **Machine learning:** Training-fold CV selected **Logistic regression** (CV ROC-AUC **0.774**). At the training-selected threshold **0.35**, held-out ROC-AUC was **0.789**, precision **57.1%**, recall **57.1%**, with **49** flagged bookings.
-4. **GenAI:** Of 30 source notes, Gemini returned **6 valid classifications**. One blank note (N004) was skipped, 3 requests failed, and 20 notes remain unprocessed. API execution stopped after HTTP 402 confirmed that prepaid credits were depleted. The available classifications were joined to the appointment data with **0 missing matches**.
+4. **GenAI:** Of 30 source notes, the first 10 were analysed. Gemini produced **9 valid classifications**, and one blank note (N004) was skipped without an API call. The V1/V2 comparison on N007 and N009 found **0/2 schema-valid V1 responses** versus **2/2 schema-valid V2 CRAFT responses**. The remaining 20 source notes were outside the required first-10 analysis scope.
 
 ## Business recommendation
 
@@ -60,7 +60,7 @@ The full cleaned table is sorted by `appointment_id` before the exact `train_tes
 - `04_genai.ipynb` — Part 4 execution notebook.
 - `notes_analysed_status.csv` — 30-row status tracker preserving valid, failed, skipped, and pending records.
 - `genai_analysis_summary.json` — verified partial GenAI analysis summary.
-- `notes_analysed.csv` — first 10 notes: 6 valid Gemini classifications, 1 blank note skipped, and 3 API-blocked records. This is a partial AI result, not 10 successful classifications.
+- `notes_analysed.csv` — first 10 notes: 9 valid Gemini classifications and 1 blank note skipped (N004). All nonblank notes passed schema validation.
 
 ## How to reproduce
 
@@ -99,3 +99,30 @@ The full cleaned table is sorted by `appointment_id` before the exact `train_tes
    actual public repository URL.
 
 **Privacy:** Example data is supplied by the assignment. Never commit Gemini API keys. In real clinical deployments, remove direct identifiers and obtain appropriate approvals before sending patient notes to an external model.
+
+## Final Gemini Experiment Results
+
+The first 10 follow-up notes were processed using Gemini.
+
+- **9 notes:** Successfully classified and validated.
+- **1 blank note (N004):** Skipped without an API call.
+- **Final model:** `gemini-3.5-flash-lite`.
+- **Validation:** Pydantic schema, confidence range 0–1, allowed root-cause categories, and summary length.
+- **Raw responses:** Preserved in `notes_analysed.csv`.
+
+### Prompt comparison
+
+| Note | V1 Simple | V2 CRAFT |
+|---|---|---|
+| N007 | Invalid schema | Valid |
+| N009 | Invalid schema | Valid |
+
+**V1 schema-valid rate:** 0/2 (0%).
+
+**V2 schema-valid rate:** 2/2 (100%).
+
+The V1 responses did not conform to the required JSON schema. The V2 CRAFT prompt produced schema-valid responses for both notes. This two-note comparison is limited in scope and does not establish general model accuracy.
+
+Supporting files:
+- `gemini_prompt_comparison.json`
+- `gemini_prompt_comparison.md`

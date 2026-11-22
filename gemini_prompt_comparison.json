@@ -1,0 +1,44 @@
+{
+  "model": "gemini-3.5-flash-lite",
+  "temperature": 0,
+  "results": [
+    {
+      "note_id": "N009",
+      "prompt_style": "v1",
+      "model": "gemini-3.5-flash-lite",
+      "validation_status": "invalid",
+      "raw_response": "{\n  \"category\": \"Unreachable\",\n  \"reason\": \"The note states the phone was switched off and the patient could not be reached after three attempts.\"\n}",
+      "error": "4 validation errors for FollowupInsight\nroot_cause\n  Field required [type=missing, input_value={'category': 'Unreachable... after three attempts.'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/missing\nconfidence\n  Field required [type=missing, input_value={'category': 'Unreachable... after three attempts.'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/missing\nsummary\n  Field required [type=missing, input_value={'"
+    },
+    {
+      "note_id": "N009",
+      "prompt_style": "v2",
+      "model": "gemini-3.5-flash-lite",
+      "validation_status": "valid",
+      "raw_response": "{\n  \"root_cause\": \"other\",\n  \"confidence\": 1.0,\n  \"summary\": \"Patient could not be reached after three attempts because their phone was switched off.\",\n  \"recommended_action\": \"Attempt to contact the patient again at a later date or send a written correspondence.\"\n}",
+      "root_cause": "other",
+      "confidence": 1.0,
+      "summary": "Patient could not be reached after three attempts because their phone was switched off.",
+      "recommended_action": "Attempt to contact the patient again at a later date or send a written correspondence."
+    },
+    {
+      "note_id": "N007",
+      "prompt_style": "v1",
+      "model": "gemini-3.5-flash-lite",
+      "validation_status": "invalid",
+      "raw_response": "{\n  \"language\": \"Hindi-English (Hinglish)\",\n  \"intent\": \"Reschedule request\",\n  \"reason\": \"Forgot appointment, did not receive SMS\",\n  \"action_required\": \"Rebook appointment\"\n}",
+      "error": "4 validation errors for FollowupInsight\nroot_cause\n  Field required [type=missing, input_value={'language': 'Hindi-Engli...': 'Rebook appointment'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/missing\nconfidence\n  Field required [type=missing, input_value={'language': 'Hindi-Engli...': 'Rebook appointment'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.14/v/missing\nsummary\n  Field required [type=missing, input_value={'"
+    },
+    {
+      "note_id": "N007",
+      "prompt_style": "v2",
+      "model": "gemini-3.5-flash-lite",
+      "validation_status": "valid",
+      "raw_response": "{\n  \"root_cause\": \"forgot_or_no_reminder\",\n  \"confidence\": 0.95,\n  \"summary\": \"Patient forgot the appointment because they did not receive an SMS reminder and requested to reschedule.\",\n  \"recommended_action\": \"Reschedule the appointment and verify the patient's mobile number for future SMS reminders.\"\n}",
+      "root_cause": "forgot_or_no_reminder",
+      "confidence": 0.95,
+      "summary": "Patient forgot the appointment because they did not receive an SMS reminder and requested to reschedule.",
+      "recommended_action": "Reschedule the appointment and verify the patient's mobile number for future SMS reminders."
+    }
+  ]
+}
