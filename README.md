@@ -27,7 +27,7 @@ The selected Logistic Regression model achieved
 **57.14%** at threshold **0.35**. It flagged 49 test
 appointments and identified 28 of 49 test no-shows.
 
-Among the six valid Gemini classifications, distance
+Among the nine valid Gemini classifications, the extracted reasons include forgotten appointments, transport difficulties, scheduling conflicts, costs and illness. These ten notes are illustrative, not a representative clinic-wide sample.
 or transport appeared twice; forgetting/reminders,
 cost, illness/emergency, and work/scheduling appeared
 once each. Four of these six appointments had received
@@ -44,11 +44,10 @@ The full cleaned table is sorted by `appointment_id` before the exact `train_tes
 
 ## Limitations
 
-- The 30 source notes are not necessarily representative of all no-show reasons. Only six valid Gemini classifications were obtained. All classifications require human review before operational use.
-- Gemini API processing was interrupted by HTTP 402 (depleted prepaid credits). Three requests failed and 20 notes remain pending. No results were invented.
-- Median imputation and IQR caps were computed on all 990 rows before the train/test split, causing minor test-to-train preprocessing leakage. In production, fit these transformations only on training data.
-- A random split can place the same patient in both partitions and does not simulate training on past appointments to predict future ones. Use patient-grouped, time-forward validation before deployment.
-- Reminder associations in observational data do not prove reminders cause lower no-show rates. A production threshold should be calibrated to actual call capacity.
+- Only the first 10 of 30 source notes were analysed. Nine were valid and N004 was skipped; this small sample cannot establish clinic-wide reasons.
+- Median imputation and IQR outlier caps were calculated on all 990 rows before the train/test split, introducing limited preprocessing leakage.
+- A random split may place the same patient in training and test data and does not simulate future deployment.
+- Observational associations do not prove causation. A production risk threshold must also reflect front-desk calling capacity.
 
 ## Repository structure
 
@@ -84,14 +83,7 @@ The full cleaned table is sorted by `appointment_id` before the exact `train_tes
    training-fold cross-validation and held-out metrics.
    The selected model is Logistic Regression.
 
-5. `04_genai.ipynb` contains the actual Gemini API
-   execution history. Of 30 notes, six were classified
-   successfully, one was skipped, three failed,
-   and 20 remain pending. HTTP 402 stopped further
-   processing because prepaid credits were depleted.
-   See `notes_analysed_status.csv` and
-   `genai_analysis_summary.json`.
-   Do not represent pending notes as classified.
+5. `04_genai.ipynb` documents the Gemini API execution and validation. The final `notes_analysed.csv` contains nine valid classifications and one skipped blank note among the required first ten. Earlier API failures were historical attempts, not the final results. See `gemini_prompt_comparison.md` for the V1/V2 experiment.
 
 6. Review notebook outputs and remove credentials,
    tokens and sensitive information before publishing.
